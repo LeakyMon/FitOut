@@ -1,5 +1,7 @@
 import React from 'react'
 import Post from './posts/Post'
+import Suggestions from './Suggestions'
+import "./Timeline.css"
 
 function Timeline() {
   return (
@@ -9,7 +11,10 @@ function Timeline() {
           <Post/>
         </div>
       </div>
+      <div className="timeline__right">
+        <Suggestions/>
       </div>
+    </div>
   )
 }
 
