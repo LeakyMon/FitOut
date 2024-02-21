@@ -3,7 +3,6 @@ import "./profile.css"
 
 import {useUser} from "../contexts/UserContext"
 import {usePosts} from "../timeline/posts/getUserPosts"
-import Post from "../timeline/posts/Post"
 import {createPost} from "../timeline/posts/createPost"
 
 function Profile() {
@@ -26,18 +25,19 @@ function Profile() {
                             <div><strong>{user.followerCount}</strong> Followers&nbsp;&nbsp;&nbsp;</div>
                             <div><strong>{user.followingCount}</strong> Following</div>
                         </div>
-                        <button className="followButton">Follow</button>
+                        <button className="follow__button">Follow</button>
                         <p className="bio">temp bio goes here{user.bio}</p>
                     </div>
                 </div>
             </div>
-            <div className="card">
-                <figure className="image">
-                {posts.map(post => (
-                    createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)
-                ))}
-                </figure>
-            </div>
+            {posts.map(post => (
+                <div className="card">
+                    <figure className="image">
+                        {createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
+                    </figure>
+                </div>
+            ))}
+
             </>
         ) : (
             <p>Loading user data...</p>

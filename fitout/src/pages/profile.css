@@ -35,13 +35,7 @@
     /* Encapsulate counts for flex-item behavior */
 }
 
-.followButton {
-    margin-top: 30px; /* Adjust as needed */
-    align-self: flex-start; /* Ensure button aligns under the info */
-    font-size: 20px;
-    margin-left:70px;
-    
-}
+
 .pfpAndUsername {
     display: flex;
     flex-direction: column;
@@ -54,7 +48,7 @@
 }
 .bio{
     
-    margin-top: 33px; /* Center the items vertically */
+    margin-top: 55px; /* Center the items vertically */
     
 }
 
@@ -115,4 +109,18 @@
       .topIMG{
         
         object-fit: cover;
+      }
+
+      .follow__button {
+        color: #0095f6;
+        font-weight: bold;
+        background: 0;
+        border: 0;
+       margin-top: 20px;
+        margin-right: 5px;
+      }
+      
+      .follow__button:hover {
+        color: white;
+        cursor: pointer;
       }

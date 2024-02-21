@@ -21,15 +21,18 @@ export const PostsProvider = ({ children }) => {
         const postsRef = collection(getFirestore(), "posts");
         const q = query(postsRef, where("creator", "==", user.uid));
         const querySnapshot = await getDocs(q);
+        //console.log(querySnapshot.docs.length);
         const fetchedPosts = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         setPosts(fetchedPosts);
+        //console.log(fetchedPosts.length); // Log the length of fetchedPosts
+
       };
 
       fetchPosts();
     } else {
       setPosts([]); // Clear posts if there is no user logged in
     }
-  }, [user]);
+  }, [posts]);
 
   return <PostsContext.Provider value={posts}>{children}</PostsContext.Provider>;
 };
