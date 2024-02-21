@@ -60,6 +60,7 @@ export async function signInWithGoogle() {
     
   }
   export function signOut(){
+    
     return auth.signOut();
   }
   

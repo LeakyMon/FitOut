@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './firebase/firebase';
+import Sidenav from './navigation/Sidenav';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+      <App />
   </React.StrictMode>
 );
 
 reportWebVitals();
+//<Sidenav/>
