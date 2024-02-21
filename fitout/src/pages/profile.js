@@ -31,13 +31,12 @@ function Profile() {
                     </div>
                 </div>
             </div>
-           
-            <div className="postsGrid">
+            <div className="card">
+                <figure className="image">
                 {posts.map(post => (
-                    // Assuming `post` has properties: username, img, caption, likes
-                    // Adjust property names as needed based on your data structure
                     createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)
                 ))}
+                </figure>
             </div>
             </>
         ) : (
