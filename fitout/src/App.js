@@ -7,7 +7,7 @@ import {getAuth, onAuthStateChanged } from 'firebase/auth';
 import SignIn from './authenticate/sign-in';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidenav from './navigation/Sidenav';
-import  UserProvider  from './contexts/UserContext'; // Adjust the path as necessary
+import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
 
 
 export default function App() {
@@ -27,17 +27,20 @@ export default function App() {
     <UserProvider>
       <Router>
         <div className="App">
-          {user ? (
-            <><Sidenav /><Routes>
-              <Route path="/" element={<Homepage />} />
-              <Route path="/profile" element={<Profile />} />
+          {user ? (   
+            <><Sidenav /><div className="content">
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/profile" element={<Profile />} />
 
-            </Routes></>
+              </Routes>
+            </div></>
           ) : (
             <div className="SignIn">
               <p>Please Login to View Wardrobe!</p>
               <SignIn />
             </div>
+            
           )}
         </div>
       </Router>

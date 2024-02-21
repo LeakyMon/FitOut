@@ -15,7 +15,7 @@
 .logo {
     width:110px;
     height: 100px;
-    margin-left: 20px;
+    margin-right: 25px;
 }
 
 .sidenav__buttons {
@@ -61,6 +61,7 @@
     background-color: rgba(255, 255, 255, 0.211);
     border: 0;
     padding: 10px;
+    
   }
   
   .logout__button:hover {

@@ -5,6 +5,7 @@ html {
 
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
@@ -15,7 +16,10 @@ html {
   width:90px;
   height: 100px;
 }
-
+.sidenav {
+  /* Fixed width */
+  
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -32,7 +36,9 @@ html {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.content {
+  flex-grow: 1;
+}
 .App-link {
   color: #61dafb;
 }

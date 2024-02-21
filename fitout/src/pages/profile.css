@@ -1,0 +1,9 @@
+.HeaderClass{
+    display: flex;
+    flex-direction: row;
+    margin-left: 500px;
+    margin-top: 25px;
+    z-index: 1;
+    padding:1rem;
+   
+}
