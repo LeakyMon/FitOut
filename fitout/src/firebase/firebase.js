@@ -47,6 +47,9 @@ export async function signInWithGoogle() {
               userID: user.uid,
               username: userName,
               bio:"",
+              followerCount:0,
+              followingCount:0,
+              numPosts:0,
             });
           } else {
             

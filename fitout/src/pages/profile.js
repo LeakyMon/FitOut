@@ -8,20 +8,31 @@ function Profile() {
     const user = useUser();
     
     return (
-        <div>
-      {user ? (
-        <div>
-          <h1>Username: {user.username   }</h1>
-          {/* Display user information */}
-          <p>Name: {user.displayName}</p>
-          <p>Email: {user.email}</p>
-        </div>
-      ) : (
-        <p>Loading user data...</p>
-      )}
-    </div>
-    
-  )
+        <main>
+            {user ? (
+                <div>
+                <div className="ProfileHeader">
+                    <img className="pfp" src={user ? user.profilePicture : ""} />
+                    <div className="profileInfo">
+                    <p><strong>{user.numPosts}</strong> Posts &nbsp; &nbsp; &nbsp;</p>
+                    <p><strong>{user.followerCount}</strong> Followers &nbsp; &nbsp; &nbsp;</p>
+                    <p><strong>{user.followingCount}</strong> Following &nbsp; &nbsp; &nbsp;</p>
+                    </div> 
+                </div>
+                <div className="ProfileValues">
+                    <h3>{user.username}</h3>
+                </div>
+                <div className="ProfileSettings">
+                    
+                </div>
+
+                </div>
+        
+            ) : (
+                <p>Loading user data...</p>
+            )}
+        </main>
+    )
 }
 
 export default Profile;

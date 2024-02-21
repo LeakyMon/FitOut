@@ -1,4 +1,4 @@
-.HeaderClass{
+.ProfileHeader{
     display: flex;
     flex-direction: row;
     margin-left: 500px;
@@ -6,4 +6,18 @@
     z-index: 1;
     padding:1rem;
    
+}
+
+.pfp{
+    padding:1rem;
+    margin-right: 50px;
+}
+.ProfileSettings{
+
+}
+.ProfileValues{
+
+}
+.profileInfo{
+    display: flex;
 }
