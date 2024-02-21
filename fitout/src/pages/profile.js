@@ -24,6 +24,7 @@ function Profile() {
                             <div><strong>{user.followingCount}</strong> Following</div>
                         </div>
                         <button className="followButton">Follow</button>
+                        <p class="bio">temp bio goes here{user.bio}</p>
                     </div>
                 </div>
             </div>
