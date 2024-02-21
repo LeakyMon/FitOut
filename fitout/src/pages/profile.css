@@ -48,7 +48,7 @@
 }
 .bio{
     
-    margin-top: 55px; /* Center the items vertically */
+    margin-top: 27px; /* Center the items vertically */
     
 }
 
@@ -118,6 +118,7 @@
         border: 0;
        margin-top: 20px;
         margin-right: 5px;
+        font-size:20px;
       }
       
       .follow__button:hover {
