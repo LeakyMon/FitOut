@@ -8,6 +8,7 @@ import SignIn from './authenticate/sign-in';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidenav from './navigation/Sidenav';
 import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
+import { PostsProvider } from './timeline/posts/getUserPosts';
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
 
   return (
     <UserProvider>
+      <PostsProvider>
       <Router>
         <div className="App">
           {user ? (   
@@ -44,6 +46,7 @@ export default function App() {
           )}
         </div>
       </Router>
+      </PostsProvider>
     </UserProvider>
   );
 }
