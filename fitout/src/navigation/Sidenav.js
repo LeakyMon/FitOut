@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Sidenav";
 import "./Sidenav.css";
+import {signOut} from "../firebase/firebase";
 
 function Sidenav() {
   return (
@@ -35,7 +36,7 @@ function Sidenav() {
         </button>
         <button className="sidenav__button">
           <span>
-            <button className="logout__button">
+            <button className="logout__button" onClick={signOut}>
               Logout
             </button>
           </span>

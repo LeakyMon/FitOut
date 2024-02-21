@@ -45,11 +45,6 @@ export async function signInWithGoogle() {
               profilePicture: user.photoURL,
               userID: user.uid,
               username: "",
-              posts: 0,
-              followers: 0,
-              following: 0,
-
-              
             });
           } else {
             
@@ -84,5 +79,4 @@ export async function signInWithGoogle() {
       return null;
     }
   }
-
-  export default app;
+  
