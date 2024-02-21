@@ -59,10 +59,15 @@
 }
 
 .postsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 16px;
-    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 25px;
+    z-index: 1;
+    margin-left:500px;
+    padding:1rem;
+    width: 600px;
+    
   }
   .postItem {
     /* Style for individual post items */

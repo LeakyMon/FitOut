@@ -3,11 +3,13 @@ import "./profile.css"
 
 import {useUser} from "../contexts/UserContext"
 import {usePosts} from "../timeline/posts/getUserPosts"
+import Post from "../timeline/posts/Post"
+import {createPost} from "../timeline/posts/createPost"
 
 function Profile() {
     const user = useUser();
     const posts = usePosts();
-
+    //const [posts, setPosts] = useState([]);
     return (
         <main>
         {user ? (
@@ -29,14 +31,14 @@ function Profile() {
                     </div>
                 </div>
             </div>
+           
             <div className="postsGrid">
-                
-                        {posts.map(post => (
-                            <div key={post.creator} className="postItem">
-                            {console.log(post.caption)/* Content of the post */}
-                            </div>
-                        ))}
-                    </div>
+                {posts.map(post => (
+                    // Assuming `post` has properties: username, img, caption, likes
+                    // Adjust property names as needed based on your data structure
+                    createPost(post.creator, post.imageURL, post.caption, post.numLikes)
+                ))}
+            </div>
             </>
         ) : (
             <p>Loading user data...</p>
