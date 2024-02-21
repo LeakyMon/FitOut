@@ -1,16 +1,19 @@
 .timeline {
     display: flex;
     flex-direction: row;
+   
   }
   
   .timeline__left {
-    flex: 0.7;
+    flex: 0.8;
   }
   
   .timeline__right {
-    flex: 0.3;
+    flex: 0.2;
   }
   
   .timeline__posts {
-    
+    margin-top: 120px;
+    margin-left: 105px;
   }
+  
