@@ -1,0 +1,13 @@
+.abovePost {
+    display: flex;
+    flex: 0.8;
+   margin-top: 20px;
+   justify-content: left;
+   margin-left: 140px;
+   margin-right: 520px;
+   border-bottom: 1px solid white;
+  }
+
+  
+  
+ 
