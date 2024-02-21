@@ -2,12 +2,21 @@
     display: flex;
     flex: 0.8;
    margin-top: 20px;
-   justify-content: left;
+   justify-content: space-between;
    margin-left: 140px;
-   margin-right: 520px;
-   border-bottom: 1px solid white;
+  
+  
   }
-
+.line{
+    border-bottom: 1px solid white;
+    width: 550px;
+}
+.RightProfile{
+    position:fixed;
+    justify-content: right;
+    margin-right: 100px;
+    margin-top: 15px;
+}
   
   
  
