@@ -36,7 +36,7 @@ function Profile() {
                 {posts.map(post => (
                     // Assuming `post` has properties: username, img, caption, likes
                     // Adjust property names as needed based on your data structure
-                    createPost(post.creator, post.imageURL, post.caption, post.numLikes)
+                    createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)
                 ))}
             </div>
             </>
