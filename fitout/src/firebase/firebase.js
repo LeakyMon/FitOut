@@ -39,12 +39,14 @@ export async function signInWithGoogle() {
         .then((docSnap) => {
           if (!docSnap.exists()) {
             console.log("First time");
+            let userName = prompt("Please enter a username");
             return setDoc(userRef, {
               name: user.displayName,
               email: user.email,
               profilePicture: user.photoURL,
               userID: user.uid,
-              username: "",
+              username: userName,
+              bio:"",
             });
           } else {
             
