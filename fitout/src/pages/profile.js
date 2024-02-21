@@ -10,24 +10,22 @@ function Profile() {
     return (
         <main>
             {user ? (
-                <div>
-                <div className="ProfileHeader">
-                    <img className="pfp" src={user ? user.profilePicture : ""} />
-                    <div className="profileInfo">
-                    <p><strong>{user.numPosts}</strong> Posts &nbsp; &nbsp; &nbsp;</p>
-                    <p><strong>{user.followerCount}</strong> Followers &nbsp; &nbsp; &nbsp;</p>
-                    <p><strong>{user.followingCount}</strong> Following &nbsp; &nbsp; &nbsp;</p>
-                    </div> 
+                <div className="profileContainer">
+                    <div className="ProfileHeader">
+                        <img className="pfp" src={user.profilePicture || ""} alt="Profile" />
+                        <div className="profileInfoAndActions">
+                            <div className="profileInfo">
+                                <div><strong>{user.numPosts}</strong> Posts&nbsp;</div>
+                                <div><strong>{user.followerCount}</strong> Followers&nbsp;</div>
+                                <div><strong>{user.followingCount}</strong> Following</div>
+                            </div>
+                            <button className="followButton">Follow</button>
+                        </div>
+                    </div>
+                    <div className="ProfileValues">
+                        <h3>{user.username}</h3>
+                    </div>
                 </div>
-                <div className="ProfileValues">
-                    <h3>{user.username}</h3>
-                </div>
-                <div className="ProfileSettings">
-                    
-                </div>
-
-                </div>
-        
             ) : (
                 <p>Loading user data...</p>
             )}

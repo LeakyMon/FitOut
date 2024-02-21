@@ -29,6 +29,7 @@ function Sidenav() {
         <button className="sidenav__button" onClick={() => handleClick('')}>
           <span>Home</span>
         </button>
+        
         <button className="sidenav__button" onClick={() => handleClick('search')}>
          
           <span>Search</span>

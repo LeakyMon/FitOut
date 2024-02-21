@@ -12,8 +12,8 @@ function Suggestions() {
             
           </span>
           <div className="username__info">
-            <span className="username">redian_</span>
-            <span className="relation">New to Instagram</span>
+            <span className="username">Hi</span>
+            <span className="relation">Message Here</span>
           </div>
         </div>
         <button className="follow__button">Follow</button>
@@ -25,8 +25,8 @@ function Suggestions() {
             
           </span>
           <div className="username__info">
-            <span className="username">redian_</span>
-            <span className="relation">New to Instagram</span>
+            <span className="username">user</span>
+            <span className="relation">Message Here</span>
           </div>
         </div>
         <button className="follow__button">Follow</button>
@@ -38,8 +38,8 @@ function Suggestions() {
             
           </span>
           <div className="username__info">
-            <span className="username">redian_</span>
-            <span className="relation">New to Instagram</span>
+            <span className="username">Mackelmore</span>
+            <span className="relation">Message Here</span>
           </div>
         </div>
         <button className="follow__button">Follow</button>
@@ -51,8 +51,8 @@ function Suggestions() {
             
           </span>
           <div className="username__info">
-            <span className="username">redian_</span>
-            <span className="relation">New to Instagram</span>
+            <span className="username">userName</span>
+            <span className="relation">Message Here</span>
           </div>
         </div>
         <button className="follow__button">Follow</button>

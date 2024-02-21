@@ -1,23 +1,41 @@
-.ProfileHeader{
+.profileContainer {
     display: flex;
     flex-direction: row;
-    margin-left: 500px;
+    align-items: center;
     margin-top: 25px;
     z-index: 1;
+    margin-left:500px;
     padding:1rem;
-   
-}
-
-.pfp{
-    padding:1rem;
-    margin-right: 50px;
-}
-.ProfileSettings{
 
 }
-.ProfileValues{
 
-}
-.profileInfo{
+.ProfileHeader {
     display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    padding: 1rem;
+}
+
+.pfp {
+    padding: 1rem;
+    margin-right: 50px;
+    flex-shrink: 0; /* Prevent the image from shrinking */
+}
+
+.profileInfoAndActions {
+    display: flex;
+    flex-direction: column; /* Ensure vertical layout for info and button */
+}
+
+.profileInfo {
+    margin-top:10px;
+    display: flex;
+    flex-direction: row; 
+    /* Encapsulate counts for flex-item behavior */
+}
+
+.followButton {
+    margin-top: 50px; /* Adjust as needed */
+    align-self: flex-start; /* Ensure button aligns under the info */
+    
 }
