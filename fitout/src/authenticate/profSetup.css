@@ -1,12 +1,10 @@
-.signin {
 
-  }
-  .App__sign-in{
-   
+.App__sign-up{
+ 
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 35px;
+  
     
     padding: 1em;
     
@@ -17,14 +15,14 @@
     flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center elements horizontally */
     justify-content: center; /* Center elements vertically (useful if you have a fixed height) */
-    padding: 1em; /* Increase padding for more space inside the container */
+    padding: 2em; /* Increase padding for more space inside the container */
     margin: auto; /* Center the container in its parent */
-    max-width: 320px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    max-width: 350px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
     width: 100%; /* Use the full width up to the max-width */
     border-radius: 8px; /* Optional: Add rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
     gap: 1em; /* Creates space between flex items; adjust as needed */
-    max-height: 450px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
     height: 100%;
   }
   .bigcontainer {
@@ -40,17 +38,17 @@
     border-radius: 8px; /* Optional: Add rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
     gap: 1em; /* Creates space between flex items; adjust as needed */
-    max-height: 375px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
     height: 100%;
   }
   
   .smallcontainer{
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: row; /* Stack elements vertically */
     align-items: center; /* Center elements horizontally */
     justify-content: center; 
-    padding: 2em; /* Increase padding for more space inside the container */
-    margin:auto;
+    padding: 2em;/* Increase padding for more space inside the container */
+    
     max-width: 464;
     width: 100%; /* Use the full width up to the max-width */
     background-color: #fff; /* Optional: Set a background color */
@@ -72,10 +70,10 @@
     pointer-events: none;
   }
   .loginlogo {
-    width:150px;
-    height: 150px;
+    width:100px;
+    height: 100px;
   }
-
+  
   input[type=button]{
     width: calc(100% - 100px); /* Full width minus padding for buttons */
     padding: 10px 20px; /* Adjust padding as needed */
@@ -96,7 +94,7 @@
     font-size: 16px;
     width: calc(100% - 100px); 
   }
-  .loginform{
+  .signinform{
    
     display:flex;
     flex-direction: column;
@@ -105,7 +103,7 @@
     color:black;
   }
   .separator{
-
+  
     font-size: 10px;
     width: 100%;
     display: flex;
@@ -124,20 +122,27 @@
     color:black;
   }
   #left{float:left;width:175px;}
-#right{float:right;width:175px;}
-#center{margin:0 auto;width:50px;}
-
-.gImg{
+  #right{float:right;width:175px;}
+  #center{margin:0 auto;width:50px;}
+  
+  .gImg{
   cursor: pointer;
-}
-.forgotpass{
+  
+  }
+  .forgotpass{
   color: black;
   font-size: 14px;
-}
-.createAcc{
+  }
+  .createAcc{
   display:flex;
   flex-direction: row;
   align-items: center;
-  width: 100%; /* Adjust if you want a specific width */
+  /* Adjust if you want a specific width */
   color:black;
-}
+  text-align: center ;
+  }
+  .lrb{
+      width: 100%;
+     font-size: 16px;
+  
+  }

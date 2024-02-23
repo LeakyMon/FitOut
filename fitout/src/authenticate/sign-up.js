@@ -1,6 +1,6 @@
 'use client';
 import React from 'react'; 
-import { signInWithGoogle, signOut } from "../firebase/firebase";
+import { signInWithGoogle, signOut, createAccountWithEmailAndPassword } from "../firebase/firebase";
 import styles from './sign-up.css';
 
 import { useNavigate } from 'react-router-dom';
@@ -10,8 +10,25 @@ import { useNavigate } from 'react-router-dom';
 function SignUp(){
   const navigate = useNavigate(); 
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (event) => {
     
+    event.preventDefault();
+
+    // Use the FormData API to collect form data
+    const formData = new FormData(event.target);
+    const fullName = formData.get('fullName'); // Name attribute of the input field
+    const username = formData.get('username'); // Name attribute of the input field
+    const email = formData.get('email'); // Name attribute of the input field
+    const password = formData.get('password'); // Name attribute of the input field
+    console.log(fullName,username,email,password);
+    try {
+    // Now you can use fullName, username, email, and password as needed
+    await createAccountWithEmailAndPassword(formData);
+    navigate('/profSetup');
+    } catch(error){
+      console.error(error);
+    }
+
   };
   const handleSignInWithGoogle = async () => {
     try {
@@ -32,13 +49,13 @@ function SignUp(){
       <img className="loginlogo" src="/FitOutLogo.webp"></img>
       </span>
 
-        <form text="test"class="signinform"onsubmit={handleSignUp} id="userform" value="Enter Username">
-         <input type="text" placeholder="Full Name"></input>
-         <input type="text" placeholder="username"></input>
-         <input type="text" placeholder="email"></input>
-         <input type="text" placeholder="password"></input>
+        <form text="test"class="signinform"onSubmit={handleSignUp} id="userform" value="Enter Username">
+         <input type="text" placeholder="Full Name" name="fullName"></input>
+         <input type="text" placeholder="username"name="username"></input>
+         <input type="text" placeholder="email"name="email"></input>
+         <input type="text" placeholder="password"name="password"></input>
         <br></br>
-         <input className="signUp"type="button" value="Create Account"></input>
+         <input className="signUp"type="submit" value="Create Account"></input>
         </form>
 
         <div className="separator" id="container">

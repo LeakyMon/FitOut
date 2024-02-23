@@ -11,6 +11,7 @@ import Sidenav from './navigation/Sidenav';
 import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
 import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
+import profSetup from './authenticate/profSetup';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -43,9 +44,10 @@ export default function App() {
           ) : (
             
             <Routes>
+              <Route path="/" element={<Navigate replace to="/signin" />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-                
+              <Route path="/setupAccount" element={<profSetup />} />
                 
             </Routes>
             

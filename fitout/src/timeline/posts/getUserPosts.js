@@ -32,7 +32,7 @@ export const PostsProvider = ({ children }) => {
     } else {
       setPosts([]); // Clear posts if there is no user logged in
     }
-  }, [posts]);
+  }, [user]);
 
   return <PostsContext.Provider value={posts}>{children}</PostsContext.Provider>;
 };

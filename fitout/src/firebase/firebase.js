@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, User} from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword , signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, User} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,6 +32,9 @@ export async function signInWithGoogle() {
     
     if (result) {
       const user = result.user;
+      storeUser(user);
+      
+      /*
       console.log(user.email);
       console.log(user.uid);
       const userRef = doc(db, "users", user.uid);
@@ -59,9 +62,97 @@ export async function signInWithGoogle() {
         .catch((error) => {
           console.error("Error accessing Firestore:", error);
         });
+        */
     }
     
   }
+  
+  export async function createAccountWithEmailAndPassword(request) {
+    console.log(request);
+    const email = request.get('email'); // Name attribute of the input field
+    const password = request.get('password'); 
+    console.log(email,password);
+     try{
+      const result = await createUserWithEmailAndPassword(auth, email,password);
+      if (result) {
+        const user = result.user;
+        
+        console.log(user.email);
+        console.log(user.uid);
+        const userRef = doc(db, "users", user.uid);
+        getDoc(userRef)
+          .then((docSnap) => {
+            if (!docSnap.exists()) {
+              console.log("First time");
+              let userName = prompt("Please enter a username");
+              return setDoc(userRef, {
+                name: user.displayName,
+                email: user.email,
+                profilePicture: user.photoURL,
+                userID: user.uid,
+                username: userName,
+                bio:"",
+                followerCount:0,
+                followingCount:0,
+                numPosts:0,
+              });
+            } else {
+              
+              console.log("User exists");
+            }
+          })
+          .catch((error) => {
+            console.error("Error accessing Firestore:", error);
+          });
+          
+
+
+
+
+
+
+      }
+     }catch(error){
+      console.log("Sign up with email/pass error", error);
+     }
+  }
+
+
+  const storeUser = async (result) => {
+
+ const user = result.user;
+      console.log(user.email);
+      console.log(user.uid);
+      const userRef = doc(db, "users", user.uid);
+      getDoc(userRef)
+        .then((docSnap) => {
+          if (!docSnap.exists()) {
+            console.log("First time");
+            let userName = prompt("Please enter a username");
+            return setDoc(userRef, {
+              name: user.displayName,
+              email: user.email,
+              profilePicture: user.photoURL,
+              userID: user.uid,
+              username: userName,
+              bio:"",
+              followerCount:0,
+              followingCount:0,
+              numPosts:0,
+            });
+          } else {
+            
+            console.log("User exists");
+          }
+        })
+        .catch((error) => {
+          console.error("Error accessing Firestore:", error);
+        });
+  }
+
+  
+  
+
   export function signOut(){
     
     return auth.signOut();
