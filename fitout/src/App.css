@@ -6,7 +6,9 @@ html {
 .App {
   text-align: center;
   display: flex;
+ 
 }
+.App__sign-in{}
 
 .App-logo {
   height: 40vmin;
@@ -50,5 +52,15 @@ html {
   to {
     transform: rotate(360deg);
   }
+}
+
+.container{
+  
+ 
+}
+
+.SignIn{
+  border: 3px solid white;
+  border-radius: 2px;
 }
 

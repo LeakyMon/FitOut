@@ -9,11 +9,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidenav from './navigation/Sidenav';
 import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
 import { PostsProvider } from './timeline/posts/getUserPosts';
-
+import {Navigate } from 'react-router-dom';
 
 export default function App() {
   const [user, setUser] = useState(null);
-
+  //const navigate = useNavigate(); // Get the navigate function
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -28,8 +28,9 @@ export default function App() {
     <UserProvider>
       <PostsProvider>
       <Router>
-        <div className="App">
+      <div> 
           {user ? (   
+           <div className="App"> 
             <><Sidenav /><div className="content">
               <Routes>
                 <Route path="/" element={<Homepage />} />
@@ -37,14 +38,18 @@ export default function App() {
 
               </Routes>
             </div></>
-          ) : (
-            <div className="SignIn">
-              <p>Please Login to View Wardrobe!</p>
-              <SignIn />
             </div>
+          ) : (
+            
+            <Routes>
+              <Route path="/signin" element={<SignIn />} />
+               
+                <Route path="*" element={<Navigate replace to="/signin" />} />
+                
+            </Routes>
             
           )}
-        </div>
+         </div>
       </Router>
       </PostsProvider>
     </UserProvider>
