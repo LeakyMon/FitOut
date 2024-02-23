@@ -13,6 +13,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  //const [profComplete, setProfComplete] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -23,8 +24,11 @@ export const UserProvider = ({ children }) => {
         if (docSnap.exists()) {
           // Combine Firebase Auth user data with Firestore data
           setUser({ ...firebaseUser, ...docSnap.data() });
+          //setProfComplete(true);
+
         } else {
-          
+          //setProfComplete(false);
+
           setUser(firebaseUser);
         }
       } else {

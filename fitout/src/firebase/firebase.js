@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword , signInWithPopup, GoogleAuthPr
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+//import { useUser } from '../contexts/UserContext'; // Adjust the import path as necessary
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -24,16 +25,20 @@ console.log("Staring app")
 const auth =getAuth(app);
 const db = getFirestore(app);
 
+
+
+
 export async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
+    provider.setCustomParameters({
+      prompt: 'select_account'
+    });
     const result = await signInWithPopup(auth, provider).catch((error) => {
       console.error("Sign-in error:", error);
     });
     
     if (result) {
       const user = result.user;
-      
-      
       console.log(user.email);
       console.log(user.uid);
       const userRef = doc(db, "users", user.uid);
@@ -66,7 +71,7 @@ export async function signInWithGoogle() {
     
   }
   
-  export async function createAccountWithEmailAndPassword(request) {
+export async function createAccountWithEmailAndPassword(request) {
     console.log(request);
     const email = request.get('email'); // Name attribute of the input field
     const password = request.get('password'); 
@@ -105,22 +110,20 @@ export async function signInWithGoogle() {
             console.error("Error accessing Firestore:", error);
           });
           
-
-
-
-
-
-
       }
      }catch(error){
       console.log("Sign up with email/pass error", error);
      }
   }
 
-
-  const storeUser = async (result) => {
-
- const user = result.user;
+  export async function signInEmailAndPass(request){
+    console.log(request);
+    const email = request.get('email'); // Name attribute of the input field
+    const password = request.get('password'); 
+    try{
+    const result = await signInWithEmailAndPassword(auth, email,password);
+    if (result) {
+      const user = result.user;
       console.log(user.email);
       console.log(user.uid);
       const userRef = doc(db, "users", user.uid);
@@ -128,17 +131,18 @@ export async function signInWithGoogle() {
         .then((docSnap) => {
           if (!docSnap.exists()) {
             console.log("First time");
-            let userName = prompt("Please enter a username");
+            //let userName = prompt("Please enter a username");
             return setDoc(userRef, {
               name: user.displayName,
               email: user.email,
               profilePicture: user.photoURL,
               userID: user.uid,
-              username: userName,
+              //username: userName,
               bio:"",
               followerCount:0,
               followingCount:0,
               numPosts:0,
+              setUpComplete:false,
             });
           } else {
             
@@ -148,11 +152,16 @@ export async function signInWithGoogle() {
         .catch((error) => {
           console.error("Error accessing Firestore:", error);
         });
+        
+    }
+   }catch(error){
+    console.log("Sign up with email/pass error", error);
+   }
+
+
+
   }
-
-  
-  
-
+ 
   export function signOut(){
     
     return auth.signOut();

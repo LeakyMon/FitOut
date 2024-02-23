@@ -16,7 +16,7 @@ function Profile() {
             <div className="profileContainer">
                 <div className="ProfileHeader">
                     <div className="pfpAndUsername">
-                        <img className="pfp" src={user.profilePicture || ""} alt="Profile" />
+                        <img className="pfp" src={user.profilePicture || ""} />
                         <h3 className="username">{user.username}</h3>
                     </div>
                     <div className="profileInfoAndActions">

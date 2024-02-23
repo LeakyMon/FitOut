@@ -13,13 +13,11 @@ import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
 import ProfSetup from './authenticate/profSetup';
 
-//import {useUser} from './contexts/UserContext';
 
 export default function App() {
   const [user, setUser] = useState(null);
  
   //const { user, isSetUpComplete } = useUser();
-  //const navigate = useNavigate(); // Get the navigate function
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -36,7 +34,6 @@ export default function App() {
       <Router>
       <div> 
           {user ? ( 
-          
             <div className="App"> 
                 <><Sidenav />
                 <div className="content">
@@ -53,9 +50,7 @@ export default function App() {
               <Route path="/" element={<Navigate replace to="/signin" />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="setupAccount" element={<ProfSetup/>}/>
               
-                
             </Routes>
             
           )}

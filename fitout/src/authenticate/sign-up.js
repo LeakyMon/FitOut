@@ -1,15 +1,14 @@
 'use client';
-import React from 'react'; 
+import React from 'react';
 import { signInWithGoogle, signOut, createAccountWithEmailAndPassword } from "../firebase/firebase";
 import styles from './sign-up.css';
-
 import { useNavigate } from 'react-router-dom';
 //-----------------SIGN IN PAGE-----------------//
 
 
 function SignUp(){
   const navigate = useNavigate(); 
-
+ 
   const handleSignUp = async (event) => {
     
     event.preventDefault();
@@ -39,7 +38,6 @@ function SignUp(){
       // Handle sign in error (e.g., show an error message)
     }
   };
-
 
  return (
       <div className="App__sign-in">
