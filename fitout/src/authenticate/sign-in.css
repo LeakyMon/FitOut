@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 15px;
     
     padding: 1em;
     
@@ -21,9 +21,43 @@
     margin: auto; /* Center the container in its parent */
     max-width: 350px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
     width: 100%; /* Use the full width up to the max-width */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
+    gap: 1em; /* Creates space between flex items; adjust as needed */
+    max-height: 650px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    height: 100%;
+  }
+  .bigcontainer {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; /* Center elements vertically (useful if you have a fixed height) */
+    padding: 2em; /* Increase padding for more space inside the container */
+    margin: auto; /* Center the container in its parent */
+    max-width: 350px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    width: 100%; /* Use the full width up to the max-width */
     background-color: #fff; /* Optional: Set a background color */
     border-radius: 8px; /* Optional: Add rounded corners */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
+    gap: 1em; /* Creates space between flex items; adjust as needed */
+    max-height: 400px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    height: 100%;
+  }
+  
+  .smallcontainer{
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: center; 
+    padding: 2em; /* Increase padding for more space inside the container */
+    margin:auto;
+    max-width: 464;
+    width: 100%; /* Use the full width up to the max-width */
+    background-color: #fff; /* Optional: Set a background color */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Add a subtle shadow for depth */
+   
+    color:black;
     gap: 1em; /* Creates space between flex items; adjust as needed */
   }
   
@@ -99,4 +133,11 @@
 .forgotpass{
   color: black;
   font-size: 14px;
+}
+.createAcc{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; /* Adjust if you want a specific width */
+  color:black;
 }

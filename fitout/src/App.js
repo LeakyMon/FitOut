@@ -5,6 +5,7 @@ import Profile from "./pages/profile";
 import React, { useEffect, useState } from 'react';
 import {getAuth, onAuthStateChanged } from 'firebase/auth';
 import SignIn from './authenticate/sign-in';
+import SignUp from './authenticate/sign-up';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidenav from './navigation/Sidenav';
 import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
@@ -43,8 +44,8 @@ export default function App() {
             
             <Routes>
               <Route path="/signin" element={<SignIn />} />
-               
-                <Route path="*" element={<Navigate replace to="/signin" />} />
+              <Route path="/signup" element={<SignUp />} />
+                
                 
             </Routes>
             

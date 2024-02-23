@@ -1,19 +1,18 @@
 'use client';
 import React from 'react'; 
 import { signInWithGoogle, signOut } from "../firebase/firebase";
-import styles from './sign-in.css';
+import styles from './sign-up.css';
 
 import { useNavigate } from 'react-router-dom';
 //-----------------SIGN IN PAGE-----------------//
 
 
-function SignIn(){
+function SignUp(){
   const navigate = useNavigate(); 
 
-  const handleSignIn = async () => {
+  const handleSignUp = async () => {
     
   };
-
   const handleSignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
@@ -23,10 +22,7 @@ function SignIn(){
       // Handle sign in error (e.g., show an error message)
     }
   };
-  const handleSignUp = async () => {
-    navigate('/signup');
 
-  }
 
  return (
       <div className="App__sign-in">
@@ -36,13 +32,13 @@ function SignIn(){
       <img className="loginlogo" src="/FitOutLogo.webp"></img>
       </span>
 
-        <form text="test"class="loginform"onsubmit={handleSignIn} id="userform" value="Enter Username">
+        <form text="test"class="signinform"onsubmit={handleSignUp} id="userform" value="Enter Username">
+         <input type="text" placeholder="Full Name"></input>
          <input type="text" placeholder="username"></input>
-         
-
+         <input type="text" placeholder="email"></input>
          <input type="text" placeholder="password"></input>
         <br></br>
-         <input className="signIn"type="button" value="Log in"></input>
+         <input className="signUp"type="button" value="Create Account"></input>
         </form>
 
         <div className="separator" id="container">
@@ -53,16 +49,16 @@ function SignIn(){
         </div>
 
       <span class="gImg" onClick={handleSignInWithGoogle}>
-        <img src="/web_dark_rd_SI@1x.png"></img>
+        <img src="/ios_dark_rd_SU@1x.png"></img>
       </span>
-     
-      <a href="/" className="forgotpass">Forgot password?</a>
   
       </div>
       
         <div className="smallcontainer">
-
-          <p class="createAcc">New to the Platform?  &nbsp; &nbsp; <a href="http://localhost:3000/signup" onClick={handleSignUp}>Create Account</a></p>
+            <div className="lrb"id="left" >Have an account? &nbsp; &nbsp; &nbsp; </div>
+       
+          <div id="right"className="lrb"><a href="">Login</a></div>
+          
 
         </div>
           </div>
@@ -71,5 +67,5 @@ function SignIn(){
     
  )
 }
-export default SignIn;
+export default SignUp;
 //322347656923-o7dnlkjloo9cookglcqgql50fjr9kcvb.apps.googleusercontent.com
