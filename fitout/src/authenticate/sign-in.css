@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 40px;
     
     padding: 1em;
     
@@ -19,7 +19,7 @@
     justify-content: center; /* Center elements vertically (useful if you have a fixed height) */
     padding: 2em; /* Increase padding for more space inside the container */
     margin: auto; /* Center the container in its parent */
-    max-width: 400px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
+    max-width: 350px; /* Set a max-width for the container to prevent it from becoming too wide on larger screens */
     width: 100%; /* Use the full width up to the max-width */
     background-color: #fff; /* Optional: Set a background color */
     border-radius: 8px; /* Optional: Add rounded corners */
@@ -28,9 +28,7 @@
   }
   
   /* Additional styles for other elements */
-  .signin, .signup {
-    
-  }
+  
   .signin:hover {
     background-color: #bee0fd;
     border: 1px solid transparent;
@@ -39,7 +37,7 @@
     height: 40vmin;
     pointer-events: none;
   }
-  .logo {
+  .loginlogo {
     width:150px;
     height: 150px;
   }
@@ -94,3 +92,11 @@
   #left{float:left;width:175px;}
 #right{float:right;width:175px;}
 #center{margin:0 auto;width:50px;}
+
+.gImg{
+  cursor: pointer;
+}
+.forgotpass{
+  color: black;
+  font-size: 14px;
+}

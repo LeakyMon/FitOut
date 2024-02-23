@@ -11,6 +11,9 @@ function SignIn(){
   const navigate = useNavigate(); 
 
   const handleSignIn = async () => {
+    
+  };
+  const handleSignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
       navigate('/'); // Redirect to homepage after sign in
@@ -20,12 +23,13 @@ function SignIn(){
     }
   };
 
+
  return (
       <div className="App__sign-in">
         <div className="container">
 
         <span className="logoContainer">
-      <img className="logo" src="/FitOutLogo.webp"></img>
+      <img className="loginlogo" src="/FitOutLogo.webp"></img>
       </span>
 
         <form text="test"class="loginform"onsubmit={handleSignIn} id="userform" value="Enter Username">
@@ -45,7 +49,14 @@ function SignIn(){
         </div>
 
         
-       
+   
+   
+      <span class="gImg" onClick={handleSignInWithGoogle}>
+        <img src="/web_dark_rd_SI@1x.png"></img>
+      </span>
+     
+      <a href="/" className="forgotpass">Forgot password?</a>
+  
 
         </div>
       </div>
@@ -53,3 +64,4 @@ function SignIn(){
  )
 }
 export default SignIn;
+//322347656923-o7dnlkjloo9cookglcqgql50fjr9kcvb.apps.googleusercontent.com
