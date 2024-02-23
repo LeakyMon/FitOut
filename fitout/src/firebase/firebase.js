@@ -4,7 +4,7 @@ import { getAuth, createUserWithEmailAndPassword , signInWithPopup, GoogleAuthPr
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc,collection, query, where, getDocs } from "firebase/firestore";
 //import { useUser } from '../contexts/UserContext'; // Adjust the import path as necessary
 
 // Your web app's Firebase configuration
@@ -24,9 +24,6 @@ const app = initializeApp(firebaseConfig);
 console.log("Staring app")
 const auth =getAuth(app);
 const db = getFirestore(app);
-
-
-
 
 export async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -171,6 +168,30 @@ export async function createAccountWithEmailAndPassword(request) {
     return onAuthStateChanged(auth,callback);
   }
   
+  export async function searchUsersByUsername(usernamePrefix) {
+    const usersRef = collection(db, "users");
+    // Create a query that searches for usernames starting with the input string
+    const startAtQuery = usernamePrefix;
+    const endAtQuery = usernamePrefix + '\uf8ff'; // '\uf8ff' is a high code point in the Unicode range, ensuring the query includes all usernames starting with usernamePrefix
+    const q = query(usersRef, where("username", ">=", startAtQuery), where("username", "<=", endAtQuery));
+
+    try {
+        const querySnapshot = await getDocs(q);
+        const users = [];
+        querySnapshot.forEach((doc) => {
+            users.push({ id: doc.id, ...doc.data() });
+        });
+        return users; // Returns an array of users matching the search criteria
+    } catch (error) {
+        console.error("Error searching users by username prefix:", error);
+        throw error; // Re-throw the error for handling by the caller
+    }
+}
+
+
+
+
+
   // Function to get user data
   export async function getUserData(uid) {
     const userRef = doc(db, "users", uid);
@@ -184,5 +205,28 @@ export async function createAccountWithEmailAndPassword(request) {
       console.log("No such document!");
       return null;
     }
+
+    //DATABASE OPERATIONS
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   

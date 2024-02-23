@@ -12,6 +12,7 @@ import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as nec
 import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
 import ProfSetup from './authenticate/profSetup';
+import Search from './pages/Search';
 
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
                     <Route path="/" element={<Homepage />} />
                     
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/search" element={<Search/>}/>
                   </Routes>
                 </div></>
               </div>
