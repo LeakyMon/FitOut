@@ -11,10 +11,14 @@ import Sidenav from './navigation/Sidenav';
 import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as necessary
 import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
-import profSetup from './authenticate/profSetup';
+import ProfSetup from './authenticate/profSetup';
+
+//import {useUser} from './contexts/UserContext';
 
 export default function App() {
   const [user, setUser] = useState(null);
+ 
+  //const { user, isSetUpComplete } = useUser();
   //const navigate = useNavigate(); // Get the navigate function
   useEffect(() => {
     const auth = getAuth();
@@ -31,23 +35,26 @@ export default function App() {
       <PostsProvider>
       <Router>
       <div> 
-          {user ? (   
-           <div className="App"> 
-            <><Sidenav /><div className="content">
-              <Routes>
-                <Route path="/" element={<Homepage />} />
-                <Route path="/profile" element={<Profile />} />
-
-              </Routes>
-            </div></>
-            </div>
+          {user ? ( 
+          
+            <div className="App"> 
+                <><Sidenav />
+                <div className="content">
+                    <Routes>
+                    
+                    <Route path="/" element={<Homepage />} />
+                    
+                    <Route path="/profile" element={<Profile />} />
+                  </Routes>
+                </div></>
+              </div>
           ) : (
-            
             <Routes>
               <Route path="/" element={<Navigate replace to="/signin" />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
-              <Route path="/setupAccount" element={<profSetup />} />
+              <Route path="setupAccount" element={<ProfSetup/>}/>
+              
                 
             </Routes>
             

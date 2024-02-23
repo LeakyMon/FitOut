@@ -24,7 +24,7 @@ function SignUp(){
     try {
     // Now you can use fullName, username, email, and password as needed
     await createAccountWithEmailAndPassword(formData);
-    navigate('/profSetup');
+    navigate('/setupAccount');
     } catch(error){
       console.error(error);
     }

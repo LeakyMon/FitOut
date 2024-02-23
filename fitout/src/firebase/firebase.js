@@ -32,9 +32,8 @@ export async function signInWithGoogle() {
     
     if (result) {
       const user = result.user;
-      storeUser(user);
       
-      /*
+      
       console.log(user.email);
       console.log(user.uid);
       const userRef = doc(db, "users", user.uid);
@@ -62,7 +61,7 @@ export async function signInWithGoogle() {
         .catch((error) => {
           console.error("Error accessing Firestore:", error);
         });
-        */
+        
     }
     
   }
@@ -84,17 +83,18 @@ export async function signInWithGoogle() {
           .then((docSnap) => {
             if (!docSnap.exists()) {
               console.log("First time");
-              let userName = prompt("Please enter a username");
+              //let userName = prompt("Please enter a username");
               return setDoc(userRef, {
                 name: user.displayName,
                 email: user.email,
                 profilePicture: user.photoURL,
                 userID: user.uid,
-                username: userName,
+                //username: userName,
                 bio:"",
                 followerCount:0,
                 followingCount:0,
                 numPosts:0,
+                setUpComplete:false,
               });
             } else {
               
