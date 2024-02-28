@@ -1,10 +1,15 @@
 import {useState} from 'react'
 import './upload.css'
+import {uploadPostToDatabase} from '../timeline/posts/createPost';
+import { useUser } from '../contexts/UserContext';
 
 function Upload() {
+  
 
   const [currentTab, setCurrentTab] = useState(0);
-
+  const [fileToUpload, setFileToUpload] = useState(null);
+  const [captionToUpload, setCaptionToUpload] = useState("");
+  const user = useUser();
 
 
   //var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -15,6 +20,13 @@ function Upload() {
     setCurrentTab(newTab);
   };
 
+  const uploadPost = ((e) => {
+    e.preventDefault();
+    console.log(fileToUpload, captionToUpload);
+    uploadPostToDatabase(user.username,fileToUpload,captionToUpload,user.uid);
+  })
+
+  
   // Conditional rendering based on currentTab
   const renderTab = () => {
     switch (currentTab) {
@@ -22,15 +34,15 @@ function Upload() {
         return (
           // Your first tab content here
           <div className="tab">
-          <form action="#" id="form" method="post" className="form">
-          <img id="close" src="" onclick ="div_hide()"></img>
+          <form id="form" className="form">
+          
           <h2>Select A File to Upload</h2>
           <div className="fileUp">
-          <input className="choosefile "type="file"></input>
+          <input onChange={(e) => setFileToUpload(e.target.files[0])} className="choosefile" id="fileupload" type="file"></input>
           </div>
          <br></br>
-          <a href="javascript:%20check_empty()" className="selectButton"id="submit">Select File</a>
-          <br></br>
+          
+         
           <br></br>
           <div style={{ overflow: 'auto' }}>
       <div style={{ float: 'right' }}>
@@ -52,12 +64,11 @@ function Upload() {
         return (
           // Your second tab content here
           <div className="tab">
-          <form action="#" id="form" method="post" className="form">
-          <img id="close" src="" onclick ="div_hide()"></img>
+          <form  id="form"  className="form">
           <h2>Upload Post</h2>
-          <textarea id="msg" name="caption" placeholder="Caption"></textarea>
+          <textarea  value={captionToUpload} onChange={(e) => setCaptionToUpload(e.target.value)} id="msg" name="caption" placeholder="Caption"></textarea>
          <br></br>
-          <a href="javascript:%20check_empty()" className="selectButton"id="submit">Upload</a>
+         <button onClick={(e) => uploadPost(e)} className="upload">Upload</button>
           <br></br>
           <br></br>
           <div style={{ overflow: 'auto' }}>
@@ -75,7 +86,6 @@ function Upload() {
           </div>
 
         );
-      // Add more cases as needed for additional tabs
       default:
         return null;
     }
@@ -85,7 +95,6 @@ function Upload() {
     <div className="abc">
     <div className="popupwindow">
       {renderTab()}
-
     </div>
    
   </div>

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import {useUser} from "../contexts/UserContext"
 //import {UseFetchPosts} from "../timeline/posts/getUserPosts"
-import {createPost} from "../timeline/posts/createPost"
+import {displayPostOnProfile} from "../timeline/posts/createPost"
 import { useParams } from 'react-router-dom';
 import { getUserData, getUserPosts } from '../firebase/firebase';
 import {useUserPosts} from '../timeline/posts/useFetchPosts';
@@ -47,7 +47,7 @@ function Userpage() {
             {posts.map(post => (
                 <div className="card">
                     <figure className="image">
-                        {createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
+                        {displayPostOnProfile(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
                     </figure>
                 </div>
             ))}

@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword , signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, User} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
+import { getStorage } from "firebase/storage";
 import { getFirestore, doc, setDoc, getDoc,collection, query, where, getDocs } from "firebase/firestore";
 //import { useUser } from '../contexts/UserContext'; // Adjust the import path as necessary
 
@@ -24,7 +24,7 @@ const app = initializeApp(firebaseConfig);
 console.log("Staring app")
 const auth =getAuth(app);
 const db = getFirestore(app);
-
+const storage = getStorage(app);
 export async function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
     provider.setCustomParameters({

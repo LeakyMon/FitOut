@@ -7,9 +7,21 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import { getFirestore, doc, setDoc, getDoc,collection, query, where, getDocs , addDoc} from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { useUser } from '../../contexts/UserContext';
+import {firebaseConfig} from '../../firebase/firebase'
+
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage();
 
 
-export function createPost(username, img, caption, likes) {
+export function displayPostOnProfile(username, img, caption, likes) {
   return (
    
     <div>
@@ -21,4 +33,32 @@ export function createPost(username, img, caption, likes) {
   )
 }
 
-//export default createPost
+export async function uploadPostToDatabase(username, img, caption, uid) {
+
+// Create a reference to 'mountains.jpg'
+const storageRef = ref(storage, 'images/' + img); // Creates a reference to 'images/fileName'
+
+// Create a reference to 'images/mountains.jpg'
+
+
+  console.log("Uploading");
+  try {
+
+    const uploadResult = await uploadBytes(storageRef, img);
+    // Get the URL of the uploaded file
+    const imageUrl = await getDownloadURL(uploadResult.ref);
+
+    // Store the post data, including the image URL, in Firestore
+    await addDoc(collection(db, "posts"), {
+      creator: uid,
+      creatorUserName: username,
+      caption: caption,
+      imageURL: imageUrl,
+      numLikes: 0
+    });
+
+    console.log("Post uploaded successfully");
+  } catch (error) {
+    console.error("Error uploading post", error);
+  }
+}

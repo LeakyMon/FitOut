@@ -3,7 +3,7 @@ import "./profile.css"
 
 import {useUser} from "../contexts/UserContext"
 import {usePosts} from "../timeline/posts/getUserPosts"
-import {createPost} from "../timeline/posts/createPost"
+import {displayPostOnProfile} from "../timeline/posts/createPost"
 
 function Profile() {
     const user = useUser();
@@ -34,7 +34,7 @@ function Profile() {
             {posts.map(post => (
                 <div className="card">
                     <figure className="image">
-                        {createPost(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
+                        {displayPostOnProfile(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
                     </figure>
                 </div>
             ))}
