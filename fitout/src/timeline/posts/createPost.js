@@ -7,7 +7,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
-import { getFirestore, doc, setDoc, getDoc,collection, query, where, getDocs , addDoc} from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc,collection, query, where, getDocs , addDoc,updateDoc, increment} from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { useUser } from '../../contexts/UserContext';
@@ -56,6 +56,11 @@ const storageRef = ref(storage, 'images/' + img); // Creates a reference to 'ima
       imageURL: imageUrl,
       numLikes: 0
     });
+    const userRef = doc(db, "users", uid); // Reference to the user's document
+    await updateDoc(userRef, {
+      numPosts: increment(1) // Atomically increments the numPosts field by 1
+    });
+
 
     console.log("Post uploaded successfully");
   } catch (error) {

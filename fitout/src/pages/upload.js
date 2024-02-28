@@ -11,7 +11,7 @@ function Upload() {
   const [captionToUpload, setCaptionToUpload] = useState("");
   const user = useUser();
 
-
+console.log(user);
   //var currentTab = 0; // Current tab is set to be the first tab (0)
   const nextPrev = (n) => {
     // Perform validation or any other checks here
@@ -22,7 +22,7 @@ function Upload() {
 
   const uploadPost = ((e) => {
     e.preventDefault();
-    console.log(fileToUpload, captionToUpload);
+    console.log(fileToUpload, captionToUpload, user.username);
     uploadPostToDatabase(user.username,fileToUpload,captionToUpload,user.uid);
   })
 
