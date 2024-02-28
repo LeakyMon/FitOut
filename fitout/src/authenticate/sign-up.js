@@ -1,34 +1,42 @@
 'use client';
-import React from 'react';
+import React, {useState} from 'react';
 import { signInWithGoogle, signOut, createAccountWithEmailAndPassword } from "../firebase/firebase";
 import styles from './sign-up.css';
 import { useNavigate } from 'react-router-dom';
 //-----------------SIGN IN PAGE-----------------//
-
+import { useUser } from '../contexts/UserContext';
 
 function SignUp(){
+
+
   const navigate = useNavigate(); 
  
+
   const handleSignUp = async (event) => {
-    
-    event.preventDefault();
+  
+  event.preventDefault();
 
-    // Use the FormData API to collect form data
-    const formData = new FormData(event.target);
-    const fullName = formData.get('fullName'); // Name attribute of the input field
-    const username = formData.get('username'); // Name attribute of the input field
-    const email = formData.get('email'); // Name attribute of the input field
-    const password = formData.get('password'); // Name attribute of the input field
-    console.log(fullName,username,email,password);
-    try {
-    // Now you can use fullName, username, email, and password as needed
-    await createAccountWithEmailAndPassword(formData);
-    navigate('/setupAccount');
-    } catch(error){
-      console.error(error);
+  const formData = new FormData(event.target);
+  const fullName = formData.get('fullName'); // Name attribute of the input field
+  const username = formData.get('username'); // Name attribute of the input field
+  const email = formData.get('email'); // Name attribute of the input field
+  const password = formData.get('password'); // Name attribute of the input field
+  console.log(fullName,username,email,password);
+
+  try {
+    const tempID = await createAccountWithEmailAndPassword(formData);
+    if (tempID) {
+      //setUser(useUser);
+      // Assuming `createAccountWithEmailAndPassword` returns a truthy value on success
+      console.log(tempID);
+      navigate(`/signup:success/${tempID}`);
     }
-
+  } catch (error) {
+    console.error(error);
+  }
   };
+
+
   const handleSignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
@@ -39,23 +47,23 @@ function SignUp(){
     }
   };
 
- return (
-      <div className="App__sign-in">
-        <div className="container">
+  const renderForms = () => {
+   
+        return (
+          <div className="container">
         <div className="bigcontainer">
         <span className="logoContainer">
       <img className="loginlogo" src="/FitOutLogo.webp"></img>
       </span>
-
-        <form text="test"class="signinform"onSubmit={handleSignUp} id="userform" value="Enter Username">
+        
+        <form text="test"class="signinform" id="userform" onSubmit={handleSignUp} value="Enter Username">
          <input type="text" placeholder="Full Name" name="fullName"></input>
          <input type="text" placeholder="username"name="username"></input>
          <input type="text" placeholder="email"name="email"></input>
          <input type="text" placeholder="password"name="password"></input>
         <br></br>
-         <input className="signUp"type="submit" value="Create Account"></input>
+         <button className="signUp" type="submit" >Create Account</button>
         </form>
-
         <div className="separator" id="container">
           <div id="left" className="lr"></div>
           <div id="center"className="textbetween">Or</div>
@@ -77,7 +85,12 @@ function SignUp(){
 
         </div>
           </div>
-        
+        );
+  };
+
+ return (
+      <div className="App__sign-in">
+        {renderForms()}        
       </div>
     
  )

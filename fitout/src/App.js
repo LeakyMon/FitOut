@@ -46,12 +46,14 @@ export default function App() {
                     <Route path="/profile/:username/:uid"  element={<Userpage />} />
                     <Route path="/search" element={<Search/>}/>
                     <Route path="/upload" element={<Upload/>}/>
+                    <Route path="/signup:success/:uid" element={<ProfSetup/>}/>
+                    
                   </Routes>
                 </div></>
               </div>
           ) : (
             <Routes>
-              <Route path="/" element={<Navigate replace to="/signin" />} />
+              <Route path="/" element={<SignIn/>} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
               

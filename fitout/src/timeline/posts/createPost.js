@@ -67,3 +67,5 @@ const storageRef = ref(storage, 'images/' + img); // Creates a reference to 'ima
     console.error("Error uploading post", error);
   }
 }
+
+

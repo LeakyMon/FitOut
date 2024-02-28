@@ -69,48 +69,47 @@ export async function signInWithGoogle() {
   }
   
 export async function createAccountWithEmailAndPassword(request) {
-    console.log(request);
-    const email = request.get('email'); // Name attribute of the input field
-    const password = request.get('password'); 
-    console.log(email,password);
-     try{
-      const result = await createUserWithEmailAndPassword(auth, email,password);
-      if (result) {
-        const user = result.user;
-        
-        console.log(user.email);
-        console.log(user.uid);
-        const userRef = doc(db, "users", user.uid);
-        getDoc(userRef)
-          .then((docSnap) => {
-            if (!docSnap.exists()) {
-              console.log("First time");
-              //let userName = prompt("Please enter a username");
-              return setDoc(userRef, {
-                name: user.displayName,
-                email: user.email,
-                profilePicture: user.photoURL,
-                userID: user.uid,
-                //username: userName,
-                bio:"",
-                followerCount:0,
-                followingCount:0,
-                numPosts:0,
-                setUpComplete:false,
-              });
-            } else {
-              
-              console.log("User exists");
-            }
-          })
-          .catch((error) => {
-            console.error("Error accessing Firestore:", error);
-          });
-          
+  console.log("In here",request);
+
+  const email = request.get('email');
+  const password = request.get('password');
+  console.log(email, password);
+
+  try {
+    console.log("try");
+    const result = await createUserWithEmailAndPassword(auth, email, password);
+    if (result) {
+      const user = result.user;
+      console.log(user.email, user.uid);
+
+      const userRef = doc(db, "users", user.uid);
+      const docSnap = await getDoc(userRef);
+
+      if (!docSnap.exists()) {
+        console.log("First time");
+        // Assuming you handle user input for name, etc., elsewhere or have defaults
+        await setDoc(userRef, {
+          name: user.displayName || '', // Provide default values as necessary
+          email: user.email,
+          profilePicture: user.photoURL || '',
+          userID: user.uid,
+          bio: "",
+          followerCount: 0,
+          followingCount: 0,
+          numPosts: 0,
+          setUpComplete: false,
+        });
+        console.log("User document created");
+      } else {
+        console.log("User exists");
       }
-     }catch(error){
-      console.log("Sign up with email/pass error", error);
-     }
+
+      return user.uid; // Indicate success
+    }
+  } catch (error) {
+    console.error("Error creating user:", error);
+    throw error; // Rethrow or handle as needed
+  }
   }
 
   export async function signInEmailAndPass(request){

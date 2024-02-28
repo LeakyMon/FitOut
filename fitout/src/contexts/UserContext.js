@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import {firebaseConfig} from '../firebase/firebase'; // Assume you have this from your Firebase setup
 
@@ -10,6 +10,9 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 const UserContext = createContext();
+// Inside UserProvider component
+
+
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -40,7 +43,7 @@ export const UserProvider = ({ children }) => {
     return unsubscribe; // Make sure to unsubscribe on cleanup
   }, []);
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return <UserContext.Provider value={ user}>{children}</UserContext.Provider>;
 };
 
 export const useUser = () => useContext(UserContext);
