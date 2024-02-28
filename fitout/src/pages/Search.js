@@ -29,20 +29,24 @@ function Search() {
 
     return (
         <div className="searchpage">
-        <input
-            placeholder="Search"
-            onChange={handleInputChange} // Update to use handleInputChange
-            value={query}
-        />
-        <button onClick={performSearch} className="">🔍</button>
-        {/* Optional: Display search results */}
-        <div>
-            {results.map((user) => (
-                <div className="results">
-                <div key={user.id}>{user.name}</div>
-                </div>
-            ))}
-        </div>
+             <label for="search"></label>
+  
+            <input
+                className="searchBar"
+                placeholder="Search"
+                
+                onChange={performSearch} // Update to use handleInputChange
+                value={query}
+            />
+        
+            {/* Optional: Display search results */}
+            <div>
+                {results.map((user) => (
+                    <div className="results">
+                    <div key={user.id}>{user.name}</div>
+                    </div>
+                ))}
+            </div>
     </div>
     );
 }
