@@ -1,14 +1,27 @@
 import React, { useContext, useState, useEffect } from 'react';
-import "./profile.css"
-
 import {useUser} from "../contexts/UserContext"
-import {usePosts} from "../timeline/posts/getUserPosts"
+//import {UseFetchPosts} from "../timeline/posts/getUserPosts"
 import {createPost} from "../timeline/posts/createPost"
+import { useParams } from 'react-router-dom';
+import { getUserData, getUserPosts } from '../firebase/firebase';
+import {useUserPosts} from '../timeline/posts/useFetchPosts';
+function Userpage() {
+    const { uid } = useParams();
+    const posts = useUserPosts(uid);
+    //const user = getUserData(uid);
+    const [user,setUser] = useState("");
+    console.log(uid + posts);
+   
+    useEffect(()=>{
+        const fetchUserData = async () => {
+            const userData = await getUserData(uid);
+            setUser(userData);
+        };
+    
+        // Call the async function
+        fetchUserData();
+    },[uid]);
 
-function Profile() {
-    const user = useUser();
-    const posts = usePosts();
-    //const [posts, setPosts] = useState([]);
     return (
         <main>
         {user ? (
@@ -47,7 +60,7 @@ function Profile() {
      
     
     </main>
-    )
+    );
 }
 
-export default Profile;
+export default Userpage;

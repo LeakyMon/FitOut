@@ -38,3 +38,5 @@ export const PostsProvider = ({ children }) => {
 };
 
 export const usePosts = () => useContext(PostsContext);
+
+

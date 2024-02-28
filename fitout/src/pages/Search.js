@@ -1,13 +1,21 @@
 import React, {useState, useEffect} from 'react'
 
 import {searchUsersByUsername} from '../firebase/firebase'
-
+//import {HandleClick} from '../navigation/Sidenav'; 
 import "./search.css"
+import { useNavigate } from 'react-router-dom';
 
 function Search() {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]); // State to hold search results
+    //const [tempUsername, setTempUsername] = useState("");
+    const navigate = useNavigate();
+
+    const handleClick = (username,id) => {
+        navigate(`/profile/${username}/${id}`);
+    };
+
     var length = 0;
     // Function to handle input changes and update query state
     const handleInputChange = async (e) => {
@@ -41,7 +49,11 @@ function Search() {
         }
     }
 
+   //var resClick = document.getElementById('res');
+  //resClick.style.cursor='pointer';
    
+   
+  
 
     return (
         <main>
@@ -56,17 +68,18 @@ function Search() {
             </div>
    
             {/* Optional: Display search results */}
+            <br></br>
             <div className="results">
                 {results.map((user) => (
-                    <div className="results">
-                    <br></br>
-                    <div key={user.id}>{user.name}</div>
-                    </div>
+                      <div key={user.id} className="results" onClick={() => handleClick(user.username, user.id)}>
+                      {user.name}
+                  </div>
+                    
                 ))}
             </div>
     </div>
     </main>
     );
-                }
+}
 
 export default Search;

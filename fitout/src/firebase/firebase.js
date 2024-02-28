@@ -194,6 +194,7 @@ export async function createAccountWithEmailAndPassword(request) {
 
   // Function to get user data
   export async function getUserData(uid) {
+    console.log("getting")
     const userRef = doc(db, "users", uid);
     const docSnap = await getDoc(userRef);
   
@@ -206,27 +207,21 @@ export async function createAccountWithEmailAndPassword(request) {
       return null;
     }
 
-    //DATABASE OPERATIONS
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
+  export async function getUserPosts(uid) {
+    const userRef = doc(db, "posts", uid);
+    const docSnap = await getDoc(userRef);
+  
+    if (docSnap.exists()) {
+      console.log("Document data:", JSON.stringify(docSnap.data()));
+      
+      return docSnap.data(); // Returns user data if document exists
+    } else {
+      console.log("No such document!");
+      return null;
+    }
 
   }
+
+
   

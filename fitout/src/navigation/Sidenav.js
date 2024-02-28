@@ -7,18 +7,17 @@ import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
 
-function Sidenav() {
+export default function Sidenav() {
   const [reRoute, setReRoute] = useState(null);
-  const navigate = useNavigate(); // Get the navigate function
-
-  const handleClick = (s) => {
-    navigate(s); // Navigate to /profile when the function is called
-  };
-
-  const handleSignOut = (s) => {
+  const navigate = useNavigate(); // Get t
+  const  handleSignOut= (s)=> {
     signOut();
     navigate(s); // Navigate to /profile when the function is called
   };
+  const handleClick = (s) => {
+   
+    navigate(s); 
+  }
 
   return (
     <div className="sidenav">
@@ -64,4 +63,12 @@ function Sidenav() {
   )
 }
 
-export default Sidenav
+export function HandleClick(s) {
+  const navigate = useNavigate(); // Get t
+  navigate(s); 
+}
+ 
+
+
+
+

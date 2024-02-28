@@ -13,7 +13,7 @@ import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
 import ProfSetup from './authenticate/profSetup';
 import Search from './pages/search';
-
+import Userpage from './pages/Userpage';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -41,8 +41,8 @@ export default function App() {
                     <Routes>
                     
                     <Route path="/" element={<Homepage />} />
-                    
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/profile/:username/:uid"  element={<Userpage />} />
                     <Route path="/search" element={<Search/>}/>
                   </Routes>
                 </div></>
