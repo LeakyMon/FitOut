@@ -14,6 +14,7 @@ import {Navigate } from 'react-router-dom';
 import ProfSetup from './authenticate/profSetup';
 import Search from './pages/search';
 import Userpage from './pages/Userpage';
+import Upload from './pages/upload';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -44,6 +45,7 @@ export default function App() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/profile/:username/:uid"  element={<Userpage />} />
                     <Route path="/search" element={<Search/>}/>
+                    <Route path="/upload" element={<Upload/>}/>
                   </Routes>
                 </div></>
               </div>
