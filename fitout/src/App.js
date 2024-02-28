@@ -12,7 +12,7 @@ import  {UserProvider}  from './contexts/UserContext'; // Adjust the path as nec
 import { PostsProvider } from './timeline/posts/getUserPosts';
 import {Navigate } from 'react-router-dom';
 import ProfSetup from './authenticate/profSetup';
-import Search from './pages/Search';
+import Search from './pages/search';
 
 
 export default function App() {
