@@ -32,10 +32,12 @@ function Profile() {
                 </div>
             </div>
             {posts.map(post => (
+                <div className="postContainer">
                 <div className="card">
                     <figure className="image">
                         {displayPostOnProfile(post.creatorUserName, post.imageURL, post.caption, post.numLikes)}
                     </figure>
+                </div>
                 </div>
             ))}
 

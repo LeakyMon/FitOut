@@ -35,7 +35,11 @@
     /* Encapsulate counts for flex-item behavior */
 }
 
-
+.postContainer{
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 100px;
+}
 .pfpAndUsername {
     display: flex;
     flex-direction: column;
@@ -116,9 +120,10 @@
         font-weight: bold;
         background: 0;
         border: 0;
-       margin-top: 20px;
-        margin-right: 5px;
-        font-size:20px;
+       margin-top: 0px;
+       margin-right: 5px;
+        font-size:15px;
+        width: 100%;
       }
       
       .follow__button:hover {
