@@ -4,11 +4,12 @@ import {searchUsersByUsername} from '../firebase/firebase'
 //import {HandleClick} from '../navigation/Sidenav'; 
 import "./search.css"
 import { useNavigate } from 'react-router-dom';
-
+import { useUser } from '../contexts/UserContext';
 function Search() {
 
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]); // State to hold search results
+    const user = useUser();
     //const [tempUsername, setTempUsername] = useState("");
     const navigate = useNavigate();
 
@@ -36,7 +37,7 @@ function Search() {
         if (query.trim() !== "") {
             console.log("performing search");
             try {
-                const searchResults = await searchUsersByUsername(query.trim());
+                const searchResults = await searchUsersByUsername(query.trim(), user.username);
                 setResults(searchResults); // Update state with search results
                 console.log(searchResults); // For debugging purposes
                 

@@ -39,7 +39,7 @@ function Userpage() {
                             <div><strong>{user.followingCount}</strong> Following</div>
                         </div>
                         <br></br>
-                        <button className="follow__button">Edit Account</button>
+                        <button className="follow__button">Follow</button>
                         <p className="bio">{user.bio}</p>
                     </div>
                 </div>

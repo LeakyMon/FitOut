@@ -168,7 +168,7 @@ export async function createAccountWithEmailAndPassword(request) {
     return onAuthStateChanged(auth,callback);
   }
   
-  export async function searchUsersByUsername(usernamePrefix) {
+  export async function searchUsersByUsername(usernamePrefix, userName) {
     const usersRef = collection(db, "users");
     // Create a query that searches for usernames starting with the input string
     const startAtQuery = usernamePrefix;
@@ -179,7 +179,11 @@ export async function createAccountWithEmailAndPassword(request) {
         const querySnapshot = await getDocs(q);
         const users = [];
         querySnapshot.forEach((doc) => {
-            users.push({ id: doc.id, ...doc.data() });
+          const userData = { id: doc.id, ...doc.data() };
+          // Exclude the current user's username from the results
+          if (userData.username !== userName) {
+              users.push(userData);
+          }
         });
         return users; // Returns an array of users matching the search criteria
     } catch (error) {
